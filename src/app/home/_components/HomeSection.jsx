@@ -10,13 +10,12 @@ const HeroSection = dynamic(() => import("./HeroSection"), {
   ssr: true,
 });
 
-
-
 const FeaturedProducts = dynamic(() => import("./FeaturedProducts"), {
-  loading: () => <SectionSkeleton variant="grid" cardCount={6} height="h-screen" />,
+  loading: () => (
+    <SectionSkeleton variant="grid" cardCount={6} height="h-screen" />
+  ),
   ssr: true,
 });
-
 
 /**
  * HomeSection Component
@@ -37,7 +36,7 @@ export default function HomeSection({
   return (
     <>
       {/* Hero Section - Lazy loaded */}
-      {/* <ErrorBoundary>
+      <ErrorBoundary>
         <Suspense
           fallback={<SectionSkeleton variant="default" height="h-screen" />}
         >
@@ -45,13 +44,14 @@ export default function HomeSection({
             <HeroSection heroData={heroData} />
           </AnimatedSection>
         </Suspense>
-      </ErrorBoundary> */}
-
+      </ErrorBoundary>
 
       {/* Featured Products Section - Lazy loaded */}
       <ErrorBoundary>
         <Suspense
-          fallback={<SectionSkeleton variant="grid" cardCount={6} height="h-screen" />}
+          fallback={
+            <SectionSkeleton variant="grid" cardCount={6} height="h-screen" />
+          }
         >
           <AnimatedSection>
             <FeaturedProducts
@@ -63,8 +63,6 @@ export default function HomeSection({
           </AnimatedSection>
         </Suspense>
       </ErrorBoundary>
-
-   
     </>
   );
 }

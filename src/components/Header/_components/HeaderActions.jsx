@@ -11,6 +11,7 @@ export default function HeaderActions({
   setSearchOpen,
   mobileMenuOpen,
   setMobileMenuOpen,
+  lang,
 }) {
   const { itemCount } = useCart();
 
@@ -56,7 +57,7 @@ export default function HeaderActions({
       </button>
 
       {/* Language Switcher */}
-      <HeaderLanguageSwitcher />
+      <HeaderLanguageSwitcher lang={lang} />
 
       {/* Mobile Menu Button */}
       <button

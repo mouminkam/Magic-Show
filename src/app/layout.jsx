@@ -17,6 +17,14 @@ export default async function RootLayout({ children }) {
         <link rel="icon" href="/images/logo.png" type="image/png" />
         <title>Magic Show - Jewelry E-commerce</title>
         <meta name="description" content="Jewelry E-commerce Website" />
+        
+        {/* Leaflet CSS */}
+        <link
+          rel="stylesheet"
+          href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+          integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+          crossOrigin=""
+        />
 
         {/* Google Fonts */}
         {/* <link

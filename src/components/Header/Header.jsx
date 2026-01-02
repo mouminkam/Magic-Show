@@ -77,6 +77,7 @@ export default function Header({ lang: initialLang }) {
                 setSearchOpen={setSearchOpen}
                 mobileMenuOpen={mobileMenuOpen}
                 setMobileMenuOpen={setMobileMenuOpen}
+                lang={lang}
               />
             </div>
           </div>

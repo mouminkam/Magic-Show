@@ -37,11 +37,11 @@ export default function HeaderNavigation({ navItems }) {
               {item.name}
               {/* Active underline - always visible when active */}
               {active && (
-                <span className="absolute bottom-0 left-0 h-0.5 bg-orange-500 w-full" />
+                <span className="absolute -bottom-1 left-0 h-0.5 bg-orange-500 w-full" />
               )}
               {/* Hover underline effect - only on hover when not active */}
               {!active && (
-                <span className="absolute bottom-0 left-0 h-0.5 bg-orange-500 transition-all duration-300 w-0 group-hover:w-full" />
+                <span className="absolute -bottom-1 left-0 h-0.5 bg-orange-500 transition-all duration-300 w-0 group-hover:w-full" />
               )}
             </Link>
           </div>
