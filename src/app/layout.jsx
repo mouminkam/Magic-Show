@@ -37,7 +37,7 @@ export default async function RootLayout({ children }) {
         /> */}
       </head>
 
-      <body>
+      <body >
         <Header lang={lang} />
         <main id="main" role="main">
           {children}

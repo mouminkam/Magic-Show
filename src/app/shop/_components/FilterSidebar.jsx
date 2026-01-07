@@ -44,38 +44,46 @@ export default function FilterSidebar({
               max={rangeMax}
               values={values}
               onChange={handleChange}
-              renderTrack={({ props, children }) => (
-                <div
-                  {...props}
-                  className="h-1.5 w-full bg-gray-300 rounded-full relative"
-                  style={{
-                    ...props.style,
-                  }}
-                >
-                  {/* Active range fill */}
+              renderTrack={({ props, children }) => {
+                const { key, ...restProps } = props;
+                return (
                   <div
-                    className="absolute h-full bg-black rounded-full"
+                    key={key}
+                    {...restProps}
+                    className="h-1.5 w-full bg-gray-300 rounded-full relative"
                     style={{
-                      left: `${((values[0] - rangeMin) / (rangeMax - rangeMin)) * 100}%`,
-                      width: `${((values[1] - values[0]) / (rangeMax - rangeMin)) * 100}%`,
+                      ...restProps.style,
                     }}
-                  />
-                  {children}
-                </div>
-              )}
-              renderThumb={({ props, isDragged }) => (
-                <div
-                  {...props}
-                  className={`h-4 w-4 rounded-full border-2 border-black bg-white shadow-lg transition-all duration-150 touch-manipulation ${
-                    isDragged ? "scale-110 shadow-xl" : "hover:scale-105"
-                  }`}
-                  style={{
-                    ...props.style,
-                    outline: "none",
-                  }}
-                >
-                </div>
-              )}
+                  >
+                    {/* Active range fill */}
+                    <div
+                      className="absolute h-full bg-black rounded-full"
+                      style={{
+                        left: `${((values[0] - rangeMin) / (rangeMax - rangeMin)) * 100}%`,
+                        width: `${((values[1] - values[0]) / (rangeMax - rangeMin)) * 100}%`,
+                      }}
+                    />
+                    {children}
+                  </div>
+                );
+              }}
+              renderThumb={({ props, isDragged }) => {
+                const { key, ...restProps } = props;
+                return (
+                  <div
+                    key={key}
+                    {...restProps}
+                    className={`h-4 w-4 rounded-full border-2 border-black bg-white shadow-lg transition-all duration-150 touch-manipulation ${
+                      isDragged ? "scale-110 shadow-xl" : "hover:scale-105"
+                    }`}
+                    style={{
+                      ...restProps.style,
+                      outline: "none",
+                    }}
+                  >
+                  </div>
+                );
+              }}
             />
           </div>
           <div className="flex justify-between text-sm text-gray-600 font-medium">

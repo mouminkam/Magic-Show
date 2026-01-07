@@ -27,6 +27,10 @@
   "something_went_wrong": "حدث خطأ ما",
   "an_error_occurred": "حدث خطأ",
   "try_again": "حاول مرة أخرى",
-  "please_login": "يرجى تسجيل الدخول للمتابعة"
+  "please_login": "يرجى تسجيل الدخول للمتابعة",
+  "email_required": "البريد الإلكتروني مطلوب",
+  "invalid_email": "يرجى إدخال عنوان بريد إلكتروني صحيح",
+  "newsletter_subscribed": "تم الاشتراك بنجاح في النشرة الإخبارية!",
+  "newsletter_error": "حدث خطأ ما. يرجى المحاولة مرة أخرى."
 }
 

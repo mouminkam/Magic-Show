@@ -5,16 +5,38 @@ import ErrorBoundary from "../../components/ui/ErrorBoundary";
 import SectionSkeleton from "../../components/ui/SectionSkeleton";
 import PageSEO from "../../components/seo/PageSEO";
 import { t } from "../../locales/i18n/getTranslation";
-import HeroBanner from "../../components/HeroBanner";
-import AnimatedSection from "../../components/ui/AnimatedSection";
 
 const StoresSection = dynamic(
   () => import("./_components/StoresSection"),
   {
-    loading: () => <SectionSkeleton variant="default" height="h-96" />,
+    loading: () => <SectionSkeleton variant="default" height="h-screen" />,
     ssr: true,
   }
 );
+
+// Functions to fetch data (can be replaced with actual API calls later)
+async function getStoresBanner(lang) {
+  // TODO: Replace with actual API call when backend is ready
+  // Option 1: Using serverAxios
+  // const serverAxios = await createServerAxios();
+  // const { data } = await serverAxios.get("/stores/banner");
+  // return data;
+  
+  // Option 2: Using fetch with Accept-Language header
+  // const res = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/stores/banner`, {
+  //   headers: { "Accept-Language": lang },
+  //   cache: "no-store",
+  // });
+  // return res.json();
+
+  // Mock data for now
+  return {
+    title: "WHERE TO FIND US",
+    backgroundImage: "/images/img04.jpg",
+    leftBadge: "SALE OF 50%",
+    rightBadge: "TRENDS FOR 2024",
+  };
+}
 
 // Function to fetch stores data
 async function getStores(lang) {
@@ -77,7 +99,12 @@ async function getStores(lang) {
 
 export default async function StoresPage() {
   const lang = await getLanguage();
-  const stores = await getStores(lang);
+
+  // Fetch data on the server
+  const [storesBanner, stores] = await Promise.all([
+    getStoresBanner(lang),
+    getStores(lang),
+  ]);
 
   return (
     <div className="bg-white min-h-screen">
@@ -87,21 +114,9 @@ export default async function StoresPage() {
         url="/stores"
         keywords={[t(lang, "stores")]}
       />
-      
-      {/* Hero Banner */}
-      <HeroBanner
-        title="WHERE TO FIND US"
-        backgroundImage="/images/img04.jpg"
-        leftBadge="SALE OF 50%"
-        rightBadge="TRENDS FOR 2024"
-      />
-
-      {/* Stores Section */}
       <ErrorBoundary>
-        <Suspense fallback={<SectionSkeleton variant="default" height="h-96" />}>
-          <AnimatedSection>
-            <StoresSection stores={stores} />
-          </AnimatedSection>
+        <Suspense fallback={<SectionSkeleton variant="default" height="h-screen" />}>
+          <StoresSection storesBanner={storesBanner} stores={stores} />
         </Suspense>
       </ErrorBoundary>
     </div>

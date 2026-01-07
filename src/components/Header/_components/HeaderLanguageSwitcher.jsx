@@ -27,8 +27,10 @@ export default function HeaderLanguageSwitcher({ lang: initialLang }) {
       sameSite: "lax",
       expires: 365, // 1 year
     });
-    // Refresh the page to update Server Components with new language
-    router.refresh();
+    // Update state immediately for instant UI feedback
+    setLang(newLang);
+    // Reload the page to update all components with new language
+    window.location.reload();
   };
 
   return (

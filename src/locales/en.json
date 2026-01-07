@@ -27,6 +27,10 @@
   "something_went_wrong": "Something went wrong",
   "an_error_occurred": "An error occurred",
   "try_again": "Try Again",
-  "please_login": "Please login to continue"
+  "please_login": "Please login to continue",
+  "email_required": "Email is required",
+  "invalid_email": "Please enter a valid email address",
+  "newsletter_subscribed": "Successfully subscribed to newsletter!",
+  "newsletter_error": "Something went wrong. Please try again."
 }
 

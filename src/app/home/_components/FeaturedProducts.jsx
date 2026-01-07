@@ -133,8 +133,10 @@ export default function FeaturedProducts({
     },
   ];
 
-  const productsToRender = featuredProducts.length > 0 ? featuredProducts : defaultFeaturedProducts;
-  const onSaleProductsToRender = onSaleProducts.length > 0 ? onSaleProducts : defaultOnSaleProducts;
+  const productsToRender =
+    featuredProducts.length > 0 ? featuredProducts : defaultFeaturedProducts;
+  const onSaleProductsToRender =
+    onSaleProducts.length > 0 ? onSaleProducts : defaultOnSaleProducts;
 
   const defaultFeaturedHeader = {
     title: "FEATURED PRODUCTS",
@@ -156,25 +158,15 @@ export default function FeaturedProducts({
 
   return (
     <>
-      <section className="w-full overflow-hidden">
-        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 xl:grid-rows-4 w-full h-auto xl:h-[200vh] mb-20">
+      <section className="w-full overflow-hidden py-12 lg:py-16 bg-white">
+        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 xl:grid-rows-4 w-full h-auto xl:h-[200vh]">
           {/* Header Section */}
-          <FeaturedHeaderSection headerData={featuredHeader || defaultFeaturedHeader} />
+          <FeaturedHeaderSection
+            headerData={featuredHeader || defaultFeaturedHeader}
+          />
 
           {/* Products */}
           {productsToRender.map((product, index) => (
-            <FeaturedProductCard key={index} product={product} />
-          ))}
-        </div>
-      </section>
-
-      <section className="w-full overflow-hidden">
-        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 xl:grid-rows-4 w-full h-auto xl:h-[200vh] mb-20">
-          {/* Header Section */}
-          <FeaturedHeaderSection headerData={onSaleHeader || defaultOnSaleHeader} />
-
-          {/* Products */}
-          {onSaleProductsToRender.map((product, index) => (
             <FeaturedProductCard key={index} product={product} />
           ))}
         </div>
